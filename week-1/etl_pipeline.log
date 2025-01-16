@@ -1,0 +1,18 @@
+2025-01-16 11:15:47,646 - INFO - ETL Pipeline Execution Started.
+2025-01-16 11:15:47,646 - INFO - Starting Data Extraction from heart.csv
+2025-01-16 11:15:47,660 - INFO - Data Extraction Successful. Shape: (1025, 14)
+2025-01-16 11:15:47,660 - INFO - Starting data transformation.
+2025-01-16 11:15:47,667 - INFO - Starting model training.
+2025-01-16 11:15:47,855 - INFO - Model training complete. Accuracy: 0.98
+2025-01-16 11:15:47,855 - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      1.00      0.98       159
+           1       1.00      0.96      0.98       149
+
+    accuracy                           0.98       308
+   macro avg       0.98      0.98      0.98       308
+weighted avg       0.98      0.98      0.98       308
+
+2025-01-16 11:15:47,855 - INFO - ETL Pipeline Execution Completed Successfully.
