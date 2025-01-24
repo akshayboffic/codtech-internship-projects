@@ -1,1 +1,23 @@
+# Plants Classification Dataset
 
+## Dataset Information
+This repository includes information and resources for the Plants Classification Dataset, which is suitable for image classification tasks involving plant species.
+
+### Dataset Details
+- **Name:** Plants Classification Dataset
+- **Source:** [Kaggle - Plants Classification](https://www.kaggle.com/datasets/marquis03/plants-classification)
+- **Description:**
+  - Contains labeled images of various plant species.
+  - Designed for building and testing image classification models.
+
+### Use Case
+This dataset is ideal for:
+- Developing machine learning models for agriculture and plant identification.
+- Environmental monitoring applications.
+- Educational purposes for studying different plant species.
+
+### Usage
+1. Download the dataset from Kaggle using the link above.
+2. Use the images to train, validate, and test your image classification models.
+
+Feel free to contribute by improving this repository or providing additional insights related to the dataset.
