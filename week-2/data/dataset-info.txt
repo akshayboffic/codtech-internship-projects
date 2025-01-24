@@ -1,23 +1,33 @@
-# Plants Classification Dataset
+Dataset Usage Description
 
-## Dataset Information
-This repository includes information and resources for the Plants Classification Dataset, which is suitable for image classification tasks involving plant species.
+Dataset Source:  Plant Village Dataset [https://www.kaggle.com/datasets/arjuntejaswi/plant-village]
 
-### Dataset Details
-- **Name:** Plants Classification Dataset
-- **Source:** [Kaggle - Plants Classification](https://www.kaggle.com/datasets/marquis03/plants-classification)
-- **Description:**
-  - Contains labeled images of various plant species.
-  - Designed for building and testing image classification models.
+Purpose:
+This dataset is being utilized for an image classification project to distinguish between different plant diseases. Specifically, I have focused on the folders containing images of pepper and potato, which include a total of 5 classes.
 
-### Use Case
-This dataset is ideal for:
-- Developing machine learning models for agriculture and plant identification.
-- Environmental monitoring applications.
-- Educational purposes for studying different plant species.
+Selected Classes:
 
-### Usage
-1. Download the dataset from Kaggle using the link above.
-2. Use the images to train, validate, and test your image classification models.
+ -> Pepper Bell Bacterial Spot
 
-Feel free to contribute by improving this repository or providing additional insights related to the dataset.
+ -> Pepper Bell Healthy
+
+ -> Potato Early Blight
+
+ -> Potato Late Blight
+
+ -> Potato Healthy
+
+Steps Taken:
+
+ ->Extracted only the folders related to pepper and potato from the dataset.
+
+ ->Organized the data into the respective classes as listed above for the classification task.
+
+Planned Use: The processed dataset will be used for developing and testing a deep learning model for image classification. This project is intended to be shared on GitHub as an open-source initiative to help others learn or build upon this work.
+
+Attribution:
+Full credit for the original dataset goes to the contributors of the Plant Village dataset on Kaggle. The dataset is publicly available and has been used here in accordance with the terms of its license.
+
+Note:
+This project strictly uses the pepper and potato folders and does not include other categories from the dataset.
+
