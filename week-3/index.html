@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>CHURN PREDICTION</h1>
+    
+    <form id="prediction-form">
+        
+        <label for="feature1">CreditScore:</label>
+        <input type="number" id="feature1" name="CreditScore" min="0" max="1000" required><br><br>
+
+        <label for="feature2">Gender:</label>
+        <select id="feature2" name="Gender">
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select><br><br>
+
+        <label for="feature3">Age:</label>
+        <input type="number" id="feature3" name="Age" min="1" max="80" required><br><br>
+
+        <label for="feature4">Tenure:</label>
+        <input type="number" id="feature4" name="Tenure" min="0" max="10" required><br><br>
+
+        <label for="feature5">Balance:</label>
+        <input type="number" id="feature5" name="Balance" min="0" max="100000" required><br><br>
+
+        <label for="feature6">Num Of Products:</label>
+        <input type="number" id="feature6" name="NumOfProducts" min="0" max="4" required><br><br>
+
+        <label for="feature7">Has Credit Card?</label>
+        <select id="feature7" name="HasCrCard">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="feature8">Is an Active Member?</label>
+        <select id="feature8" name="IsActiveMember">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="feature9">Estimated Salary:</label>
+        <input type="number" id="feature9" name="EstimatedSalary" min="0" max="1000000" required><br><br>
+
+        <label for="feature10">Lives in France?</label>
+        <select id="feature10" name="Geography_France">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="feature11">Lives in Germany?</label>
+        <select id="feature11" name="Geography_Germany">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="feature12">Lives in Spain?</label>
+        <select id="feature12" name="Geography_Spain">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+   
+    <div id="resultModal">
+        <p id="result-text"></p>
+        <p id="detailed-info"></p>
+    </div>
+
+    
+    <audio id="flashSound" src="wrong.mp3"></audio>
+
+    <script>
+        const form = document.getElementById("prediction-form");
+        const resultModal = document.getElementById("resultModal");
+        const resultText = document.getElementById("result-text");
+        const detailedInfo = document.getElementById("detailed-info");
+
+        
+        const flashSound = document.getElementById("flashSound");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            // Collect input values
+            const feature1 = parseFloat(document.getElementById("feature1").value);
+            const feature2 = parseInt(document.getElementById("feature2").value);
+            const feature3 = parseFloat(document.getElementById("feature3").value);
+            const feature4 = parseInt(document.getElementById("feature4").value);
+            const feature5 = parseInt(document.getElementById("feature5").value);
+            const feature6 = parseInt(document.getElementById("feature6").value);
+            const feature7 = parseInt(document.getElementById("feature7").value);
+            const feature8 = parseFloat(document.getElementById("feature8").value);
+            const feature9 = parseInt(document.getElementById("feature9").value);
+            const feature10 = parseInt(document.getElementById("feature10").value);
+            const feature11 = parseInt(document.getElementById("feature11").value);
+            const feature12 = parseInt(document.getElementById("feature12").value);
+
+            try {
+                const response = await fetch("http://localhost:5000/predict", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        data: [
+                            feature1, feature2, feature3, feature4,
+                            feature5, feature6, feature7, feature8,
+                            feature9, feature10, feature11, feature12
+                        ]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                resultText.textContent = `Prediction: ${data.final_prediction === 1 ? "Churn" : "No Churn"}`;
+
+                
+                if (data.final_prediction === 1) {
+                    
+                    resultText.style.color = "#f44336"; 
+                    resultText.style.fontWeight = "bold";
+                    detailedInfo.textContent = "This customer is predicted to churn. It is recommended to engage with the customer proactively, offering promotions or personalized services to retain them.";
+                    resultModal.classList.add('flash'); 
+                    flashSound.play(); 
+                } else {
+                    
+                    resultText.style.color = "#4CAF50";  
+                    resultText.style.fontWeight = "bold";
+                    detailedInfo.textContent = "This customer is unlikely to churn. It's a good opportunity to continue providing excellent service and consider upselling additional products.";
+                    resultModal.classList.remove('flash'); 
+                }
+
+                
+                resultModal.style.display = "block";
+            window.onclick = function(event) {
+            if (event.target == resultModal) {
+                resultModal.style.display = "none";
+            }
+        }
+            } catch (error) {
+                resultText.textContent = `Error: ${error.message}`;
+                console.error(error);   
+                resultModal.style.display = "block";
+            }
+        });
+
+        
+        
+
+    </script>
+</body>
+</html>

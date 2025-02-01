@@ -1,0 +1,242 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #e1e8ed);
+    color: #2f2f2f;
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+/* Form Container */
+form {
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; 
+    max-height: 80vh; 
+    text-align: center;
+    box-sizing: border-box; 
+    overflow-y: auto; 
+    margin-top: 20px; 
+}
+
+
+h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #2d2d2d;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+    text-align: center;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background-color: #f5a623;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1:hover {
+    color: #f5a623;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px;  
+    margin: 10px 0; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+button {
+    background-color: #4f9f80;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #3e7a5e;
+    transform: translateY(-5px);
+}
+
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#result-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input[type="number"], select, button {
+        font-size: 14px;
+    }
+}
+#resultModal {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 250px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Flash Effect for Churn */
+@keyframes flashEffect {
+    0% { background-color: white; }
+    50% { background-color: #ff6347; }
+    100% { background-color: white; }
+}
+
+.flash {
+    animation: flashEffect 1s 2; 
+
+}
+
+#detailed-info {
+    margin-top: 15px;
+    font-size: 19px;
+    color: #333;
+    font-weight: 400;
+}
+
+
+#detailed-info a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+#detailed-info a:hover {
+    text-decoration: underline;
+}
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], select, textarea {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;    
+    padding: 12px 15px;         
+    border-radius: 8px;         
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;           
+    color: #2d2d2d;           
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;  
+}
+
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+    border: 1px solid #4f9f80; 
+    background-color: #fff;      
+    outline: none;               
+    box-shadow: 0 0 5px rgba(79, 159, 128, 0.5); 
+}
+
+
+input::placeholder, textarea::placeholder {
+    color: #b3b3b3;  
+    font-weight: 300; 
+}
+
+
+label {
+    font-weight: 500;  
+    font-size: 0.9rem;
+    color: #555;       
+    margin-bottom: 8px;
+    display: block;     
+}
+
+textarea {
+    height: 150px;
+    resize: vertical; 
+}
